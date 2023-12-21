@@ -1,5 +1,7 @@
 #include "../include/morse.h"
 
+// morseAudio: recebe uma string contendo um codigo morse
+// e o reproduz em formato de audio
 void morseAudio(char *morse) {
     int tam;
     for (int i = 0; i < strlen(morse); i++) {
