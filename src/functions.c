@@ -41,7 +41,7 @@ void lerPorClique(char *palavra) {
         }
 
         if (parar == 1) {
-            palavra[i] == '\0';
+            palavra[i] = '\0';
             break;
         }
 
