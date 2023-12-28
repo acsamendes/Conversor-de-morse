@@ -41,3 +41,26 @@ void conv_MorseParaAlfaNumerico(char *morse){
         caractere = strtok(NULL, " ");
     }
 }
+
+//função para limpar a tela
+void clear(){
+    #ifdef __linux__
+        system("clear");
+    #elif _WIN32
+        system("cls");
+    #endif
+}
+//função para mostar o menu
+void menu() {
+    printf(ROXO"\t\t========= Conversor Morse =========\n\n"FIM_COR);
+    printf("1. Alfanumerico para Morse\n");
+    printf("2. Morse para Alfanumerico\n");
+    printf("3. Como funciona o codigo morse?\n");
+    printf("0. Sair\n");
+
+//função esperar para que o usuário pressione enter(interface)
+void esperar() {
+    printf(ROXO"\nPressione Enter para continuar..."FIM_COR);
+    while (getchar() != '\n');
+    getchar();  
+}
