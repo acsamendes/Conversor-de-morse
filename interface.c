@@ -30,6 +30,7 @@ void esperar() {
 int main() {
 
     int escolha;
+    char entrada[100];
 
     do {
         clear();
@@ -49,7 +50,9 @@ int main() {
                 clear();
                 printf(ROXO"------- Morse para Alfanumerico -------\n\n"FIM_COR);
                 printf("Digite o valor Morse: ");
-                printf("\nResultado em alfanumerico: \n");
+                scanf("%s", entrada);
+                printf("\nResultado em alfanumerico: ");
+                conv_MorseParaAlfaNumerico(entrada);
                 esperar();
                 break;
             case 3:
