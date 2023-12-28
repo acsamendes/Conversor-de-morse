@@ -64,3 +64,6 @@ void esperar() {
     while (getchar() != '\n');
     getchar();  
 }
+//Cor do terminal
+#define ROXO "\e[1;34m"
+#define FIM_COR "\e[0m"
