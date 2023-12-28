@@ -55,11 +55,16 @@ void conv_MorseParaAlfaNumerico(char *morse){
 }
 
 void menu() {
-    printf(ROXO"\t\t========= Conversor Morse =========\n\n"FIM_COR);
-    printf("1. Alfanumerico para Morse\n");
-    printf("2. Morse para Alfanumerico\n");
-    printf("3. Como funciona o codigo morse?\n");
-    printf("0. Sair\n");
+    printf(ROXO"\t\t========= CONVERSOR MORSE =========\n\n"FIM_COR);
+    printf(ROXO"1 - "FIM_COR);
+    printf("Alfanumerico para Morse\n");
+    printf(ROXO"2 - "FIM_COR);
+    printf("Morse para Alfanumerico\n");
+    printf(ROXO"3 - "FIM_COR);
+    printf("Como funciona o codigo morse?\n");
+    printf(ROXO"0 - "FIM_COR);
+    printf("Sair\n");
+   
 }
 void esperar() {
     printf(ROXO"\nPressione Enter para continuar..."FIM_COR);
