@@ -1,11 +1,11 @@
 #include "../include/morse.h"
 
-// lerPorClique: lê através do input (teclado) por cliques um código morse e o coloca em palavra
-// para os caracteres deve-se segurar a tecla enter
-// '.' -> segurar enter por aproximadamente 1 segundo
-// '-' -> segurar enter por aproximadamente 2 segundos
-// deve haver um intervalo de aproximadamente 1 segundo entre um dígito e outro
-// ' ' -> manter o enter solto por aproximadamente 3 segundos
+// lerPorClique: lê um código morse através do input (teclado) por cliques e o coloca em palavra
+// deve-se utilizar a tecla enter
+// '.' -> pressione o enter uma vez
+// '-' -> segure a tecla até que ao menos mais um enter saia no input
+// deve haver um intervalo de aproximadamente meio segundo entre um dígito e outro
+// ' ' -> manter a tecla solta por aproximadamente 3 segundos
 // para parar a leitura, digite qualquer letra e pressiona enter
 void lerPorClique(char *palavra) {
     // essa struct utiliza da biblioteca sys/time.h para calcular o tempo entre os inputs do teclado
