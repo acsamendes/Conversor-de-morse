@@ -10,4 +10,6 @@
 // Protótipos de Funções
 void lerPorClique(char *palavra);
 
+void conv_MorseParaAlfaNumerico(char *morse);
+
 #endif

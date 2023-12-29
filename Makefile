@@ -19,7 +19,7 @@ OBJ=$(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(C_SOURCE))
 CC=gcc
 
 # Flags for compiler
-CC_FLAGS=-c -W -Wall -ansi -pedantic -I$(INC_DIR)
+CC_FLAGS=-c -W -Wall -ansi -pedantic -I$(INC_DIR) -std=c99
 
 # Command used at clean target
 RM = rm -rf
@@ -27,9 +27,9 @@ RM = rm -rf
 #
 # Compilation and linking
 #
-all: objFolder $(PROJ_NAME) run
+all: objFolder $(OBJ_DIR)/$(PROJ_NAME) run
 
-$(PROJ_NAME): $(OBJ)
+$(OBJ_DIR)/$(PROJ_NAME): $(OBJ)
 	@ echo 'Building binary using GCC linker: $@'
 	$(CC) $^ -o $@
 	@ echo 'Finished building binary: $@'
@@ -50,7 +50,7 @@ objFolder:
 
 run:
 	@ clear
-	@./$(PROJ_NAME).exe
+	@./$(OBJ_DIR)/$(PROJ_NAME).exe
 
 clean:
 	@ $(RM) $(OBJ_DIR)/*.o $(PROJ_NAME) *~
