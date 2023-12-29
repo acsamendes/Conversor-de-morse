@@ -1,7 +1,6 @@
 #include "../include/morse.h"
 
 int main() {
-
     char escolha;
     char entrada[100];
 
