@@ -1,5 +1,50 @@
 #include "../include/morse.h"
 
+char morse_num[10][6] = {
+    "-----",
+    ".----",
+    "..---",
+    "...--",
+    "....-", 
+    ".....",
+    "-....",
+    "--...",
+    "---..",
+    "----."
+};
+
+
+
+char morse_alpha[27][6] = {//ultima coluna para o \0
+    ".-", //a
+    "-...", //b
+    "-.-.",//c
+    "-..",//d
+    ".",//e
+    "..-.",//f
+    "--.",//g
+    "....",//h
+    "..",//i
+    ".---",//j
+    "-.-",//k
+    ".-..",//l
+    "--",//m
+    "-.",//n
+    "---",//o
+    ".--.",//p
+    "--.-",//q
+    ".-.",//r
+    "...",//s
+    "-",//t
+    "..-",//u
+    "...-",//v
+    ".--",//w
+    "-..-",//x
+    "-.--",//y
+    "--..",//z
+    "/"
+    };
+
 // lerPorClique: lê um código morse através do input (teclado) por cliques e o coloca em palavra
 // deve-se utilizar a tecla enter
 // '.' -> pressione o enter uma vez
@@ -61,25 +106,20 @@ void lerPorClique(char *palavra) {
     }
 }
 
-//funçaão para a conversão de morse para alfanumérico
+//função para a conversão de morse para alfanumérico
 void conv_MorseParaAlfaNumerico(char *morse){
-    // definição das strings bases referentes as 26 letras do alfabeto mais o caractere de espaço e os 10 algarismos
-    char *alfabeto[27] = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..", "/"};
-    char *numeros[10] = {"-----", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----."};
-
-
     // funçao strtok divide a string original (morse) em substrings (caracteres individuais) separadas por espaços
     char *caractere = strtok((char *)morse, " ");
 
     // loop principal que percorre toda a string original
+    int i;
+    int encontrado;
     while (caractere != NULL){
-        int i;
-        int encontrado = 0;
-
+        encontrado = 0;
         // loop que compara linearmente cada caractere da substring com a referencia (alfabeto) e realiza a conversão
         for (i = 0; i < 27; i++) {
-            if (strcmp(caractere, alfabeto[i]) == 0) {
-                if (i == 26) {
+            if (strcmp(caractere, morse_alpha[i]) == 0) {
+                if (i == 26) {//se morse_alpha[i] é a barra que indica espaço
                     printf(" ");
                     encontrado = 1;
                     break;
@@ -93,7 +133,7 @@ void conv_MorseParaAlfaNumerico(char *morse){
 
         // loop que compara linearmente cada caractere da substring com a referencia (numeros) e realiza a conversão
         for (i = 0; i < 10; i++) {
-            if (strcmp(caractere, numeros[i]) == 0) {
+            if (strcmp(caractere, morse_num[i]) == 0) {
                 printf("%d", i);
                 encontrado = 1;
                 break;
@@ -109,6 +149,44 @@ void conv_MorseParaAlfaNumerico(char *morse){
         caractere = strtok(NULL, " ");
     }
 }
+
+//funções de conversão de alfanumérico para morse
+void toLower(char **string_ref, int tam){//string minuscula
+    int i;
+    char c;
+
+    char* string = *string_ref;
+
+    for(i=0; i<tam; i++){
+        c = string[i];
+        if(c>='A' && c<='Z') string[i]= c + 32;
+    }
+
+}
+
+char* morse_sourse(char c){
+    if(c >= '0' && c <= '9') return morse_num[c - '0'];
+    else if(c == ' ') printf(" ");
+    return morse_alpha[c-'a'];
+}
+
+void xerife(char *id_morse_alpha){
+    printf("%s ", id_morse_alpha);
+}
+
+void conv_AlfaNumericoToMorse(char *string){    
+    int tam = strlen(string);
+    toLower(&string, tam);
+
+    for(int i = 0; i<tam; i++){
+        xerife(morse_sourse(string[i]));
+    }
+
+    printf("\n");
+
+}
+
+
 
 //função para limpar a tela
 void clear(){
