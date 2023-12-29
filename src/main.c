@@ -26,7 +26,7 @@ int main() {
                 clear();
                 printf(ROXO"------- Morse para Alfanumerico -------\n\n"FIM_COR);
                 printf("Digite o valor Morse: ");
-                scanf("%s", entrada);
+                scanf(" %[^\n]", entrada);
                 printf("\nResultado em alfanumerico: ");
                 conv_MorseParaAlfaNumerico(entrada);
                 esperar();
