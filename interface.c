@@ -55,8 +55,8 @@ void conv_MorseParaAlfaNumerico(char *morse){
 }
 
 void menu() {
-    printf(ROXO"\t\t========= CONVERSOR MORSE =========\n\n"FIM_COR);
-    printf(ROXO"1 - "FIM_COR);
+    printf(ROXO"\t\t========= CONVERSOR MORSE =========\n\n");
+    printf("1 - "FIM_COR);
     printf("Alfanumerico para Morse\n");
     printf(ROXO"2 - "FIM_COR);
     printf("Morse para Alfanumerico\n");
