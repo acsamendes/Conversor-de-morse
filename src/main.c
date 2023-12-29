@@ -2,24 +2,24 @@
 
 int main() {
 
-    int escolha;
+    char escolha;
     char entrada[100];
 
     do {
         clear();
         menu();
         printf("\nEscolha a operacao: ");
-        scanf("%d", &escolha);
+        scanf("%c", &escolha);
 
         switch (escolha) {
-            case 1:
+            case '1':
                 clear();
                 printf(ROXO"-------- Alfanumerico para Morse --------\n\n"FIM_COR);
                 printf("Digite o valor alfanumerico: ");
                 printf("\nResultado em Morse: \n");
                 esperar();
                 break;
-            case 2:
+            case '2':
                 clear();
                 printf(ROXO"------- Morse para Alfanumerico -------\n\n"FIM_COR);
                 printf("Digite o valor Morse: ");
@@ -28,7 +28,7 @@ int main() {
                 conv_MorseParaAlfaNumerico(entrada);
                 esperar();
                 break;
-            case 3:
+            case '3':
                 clear();
                 printf(ROXO"COMO FUNCIONA O CODIGO MORSE?\n\n"FIM_COR);
                 printf("O codigo Morse e um sistema de codificao de caracteres alfanumericos que utiliza sequencias de pulsos curtos\n");
@@ -52,17 +52,17 @@ int main() {
                 printf("\n");
                 esperar();
                 break;
-            case 0:
+            case '0':
                 clear();
                 printf(ROXO"Obrigado por utilizar o nosso conversor, ate breve!\n"FIM_COR);
                 break;
 
             default:
                 printf(ROXO"Opcao invalida. Tente novamente.\n"FIM_COR);
-                esperar();
+                continue;
 
         }
-    } while (escolha != 0);
+    } while (escolha != '0');
 
     return 0;
 }
