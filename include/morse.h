@@ -27,4 +27,7 @@ void clear();
 void menu();
 void esperar();
 
+void limparBuffer();
+
+
 #endif
