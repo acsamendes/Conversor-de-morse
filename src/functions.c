@@ -61,17 +61,22 @@ void lerPorClique(char *palavra) {
     }
 }
 
-//funcao para a conversao de morse para alfanumerico
+//funçaão para a conversão de morse para alfanumérico
 void conv_MorseParaAlfaNumerico(char *morse){
+    // definição das strings bases referentes as 26 letras do alfabeto mais o caractere de espaço e os 10 algarismos
     char *alfabeto[27] = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..", "/"};
     char *numeros[10] = {"-----", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----."};
 
+
+    // funçao strtok divide a string original (morse) em substrings (caracteres individuais) separadas por espaços
     char *caractere = strtok((char *)morse, " ");
-    
+
+    // loop principal que percorre toda a string original
     while (caractere != NULL){
         int i;
         int encontrado = 0;
 
+        // loop que compara linearmente cada caractere da substring com a referencia (alfabeto) e realiza a conversão
         for (i = 0; i < 27; i++) {
             if (strcmp(caractere, alfabeto[i]) == 0) {
                 if (i == 26) {
@@ -86,6 +91,7 @@ void conv_MorseParaAlfaNumerico(char *morse){
             }
         }
 
+        // loop que compara linearmente cada caractere da substring com a referencia (numeros) e realiza a conversão
         for (i = 0; i < 10; i++) {
             if (strcmp(caractere, numeros[i]) == 0) {
                 printf("%d", i);
@@ -94,10 +100,12 @@ void conv_MorseParaAlfaNumerico(char *morse){
             }
         }
 
+        // imprime um símbolo caso o caractere não tenha sido reconhecido em nenhuma das duas strings bases (alfabeto e numeros)
         if (!encontrado) {
             printf("(?)");
         }
 
+        // relização da passagem para o proximo caractere 
         caractere = strtok(NULL, " ");
     }
 }
