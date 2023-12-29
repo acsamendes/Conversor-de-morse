@@ -10,6 +10,7 @@ int main() {
         menu();
         printf("\nEscolha a operacao: ");
         scanf("%c", &escolha);
+        limparBuffer();
 
         switch (escolha) {
             case '1':
@@ -56,10 +57,9 @@ int main() {
                 clear();
                 printf(ROXO"Obrigado por utilizar o nosso conversor, ate breve!\n"FIM_COR);
                 break;
-
             default:
-                printf(ROXO"Opcao invalida. Tente novamente.\n"FIM_COR);
                 continue;
+                break;
 
         }
     } while (escolha != '0');

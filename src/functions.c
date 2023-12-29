@@ -138,3 +138,8 @@ void esperar() {
     while (getchar() != '\n');
     getchar();  
 }
+
+// essa função limpa o buffer, para evitar problemas com o scanf
+void limparBuffer() {
+    while (getchar() != '\n');
+}

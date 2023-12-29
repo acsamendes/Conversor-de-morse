@@ -53,9 +53,7 @@ run:
 	@./$(OBJ_DIR)/$(PROJ_NAME)
 
 clean:
-	@ echo 'Deleting obj folder: $<'
 	@ $(RM) $(OBJ_DIR)/*.o $(PROJ_NAME) *~
 	@ $(RM) $(OBJ_DIR)
-	@ clear
 
 .PHONY: all clean
