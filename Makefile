@@ -27,7 +27,7 @@ RM = rm -rf
 #
 # Compilation and linking
 #
-all: objFolder $(OBJ_DIR)/$(PROJ_NAME) run
+all: objFolder $(OBJ_DIR)/$(PROJ_NAME) run clean
 
 $(OBJ_DIR)/$(PROJ_NAME): $(OBJ)
 	@ echo 'Building binary using GCC linker: $@'

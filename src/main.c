@@ -18,18 +18,54 @@ int main() {
                 printf(ROXO"-------- Alfanumerico para Morse --------\n\n"FIM_COR);
                 printf("Digite o valor alfanumerico: ");
                 scanf(" %[^\n]", entrada);
-                conv_AlfaNumericoToMorse(entrada);
                 printf("\nResultado em Morse: \n");
+                conv_AlfaNumericoToMorse(entrada);
                 esperar();
                 break;
             case '2':
                 clear();
-                printf(ROXO"------- Morse para Alfanumerico -------\n\n"FIM_COR);
-                printf("Digite o valor Morse: ");
-                scanf(" %[^\n]", entrada);
-                printf("\nResultado em alfanumerico: ");
-                conv_MorseParaAlfaNumerico(entrada);
-                esperar();
+                printf(ROXO"------- Morse para Alfanumerico -------\n\n");
+
+                printf("1 - "FIM_COR);
+                printf("Digitar o código morse\n");
+                printf(ROXO"2 - "FIM_COR);
+                printf("Leitura por cliques\n");
+                printf("\nEscolha a operacao: ");
+                scanf("%c", &escolha);
+                limparBuffer();
+
+                switch (escolha) {
+                    case '1':
+                        clear();
+                        printf(ROXO"------- Morse para Alfanumerico -------\n\n"FIM_COR);
+                        printf("Digite o valor Morse: ");
+                        scanf(" %[^\n]", entrada);
+                        printf("\nResultado em alfanumerico: ");
+                        conv_MorseParaAlfaNumerico(entrada);
+                        esperar();
+                        break;
+                    case '2':
+                        clear();
+                        printf(ROXO"------- Morse para Alfanumerico -------\n\n"FIM_COR);
+                        printf("Para utilizar o leitor por cliques, siga as seguintes diretrizes:\n");
+                        printf("Utilize a tecla 'enter' para a leitura da string.\n");
+                        printf("Pressione-a uma vez para colocar um '.'.\n");
+                        printf("Segure a tecla por um tempo para colocar um '-'.\n");
+                        printf("Deve haver um intervalo de meio segundo entre diferentes caracteres.\n");
+                        printf("Deve haver um intervalo de 3 segundos entre uma letra e outra.\n");
+                        printf("Deve haver um intervalo de 5 segundos entre uma palavra e outra.\n");
+                        printf("Para parar a leitura, digite qualquer letra e pressione enter.\n");
+                        esperar();
+
+                        clear();
+                        printf("Digite o morse por cliques: \n");
+                        lerPorClique(entrada);
+                        printf("Morse lida: %s", entrada);
+                        printf("\nResultado em alfanumerico: ");
+                        conv_MorseParaAlfaNumerico(entrada);
+                        esperar();
+                        break;
+                }
                 break;
             case '3':
                 clear();
@@ -62,7 +98,6 @@ int main() {
             default:
                 continue;
                 break;
-
         }
     } while (escolha != '0');
 

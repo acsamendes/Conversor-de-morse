@@ -74,15 +74,12 @@ void lerPorClique(char *palavra) {
 
             gettimeofday(&end, 0);
             tempoSec = (double) (end.tv_sec - begin.tv_sec) + (end.tv_usec - begin.tv_usec) * 1e-6;
-            printf("tempo: %lf\n", tempoSec);
             if (tempoSec > 0.4) {
-                printf("nova letra\n");
                 break;
             }
 
             // a quantidade de enters é usada para saber se é um ponto ou um traço
             soma++;
-            printf("soma: %d\n", soma);
 
             gettimeofday(&begin, 0);
         }
@@ -98,6 +95,11 @@ void lerPorClique(char *palavra) {
         }
 
         if (tempoSec > 2) {
+            palavra[i++] = ' ';
+        }
+
+        if (tempoSec > 4) {
+            palavra[i++] = '/';
             palavra[i++] = ' ';
         }
         
@@ -213,7 +215,7 @@ void menu() {
 //função esperar para que o usuário pressione enter(interface)
 void esperar() {
     printf(ROXO"\nPressione Enter para continuar..."FIM_COR);
-    while (getchar() != '\n');
+    limparBuffer();
     getchar();  
 }
 
