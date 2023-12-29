@@ -17,8 +17,14 @@ int main() {
                 printf(ROXO"-------- Alfanumerico para Morse --------\n\n"FIM_COR);
                 printf("Digite o valor alfanumerico: ");
                 scanf(" %[^\n]", entrada);
+                limparBuffer();
                 printf("\nResultado em Morse: \n");
                 conv_AlfaNumericoToMorse(entrada);
+
+                printf("Deseja reproduzir em áudio? Esse é um recurso experimental. (S/N) ");
+                if (tolower(getchar()) == 's') {
+                    morseAudio("..-. . .-.. .. .--. .");
+                }
                 esperar();
                 break;
             case '2':
