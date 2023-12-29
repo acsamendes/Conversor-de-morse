@@ -8,14 +8,17 @@
 // ' ' -> manter o enter solto por aproximadamente 3 segundos
 // para parar a leitura, digite qualquer letra e pressiona enter
 void lerPorClique(char *palavra) {
-    clock_t tempo;
+    // essa struct utiliza da biblioteca sys/time.h para calcular o tempo entre os inputs do teclado
+    struct timeval begin, end;
+    double tempoSec;
     int soma = 0, i = 0;
 
+    getchar();
+    gettimeofday(&begin, 0);
+    
     // esse loop externo roda enquanto houverem caracteres a serem lidos
     while (1) {
         int parar = 0;
-        getchar();
-        tempo = clock();
 
         // esse loop roda enquanto estiver em um mesmo dígito
         while (1) {
@@ -24,17 +27,21 @@ void lerPorClique(char *palavra) {
                 break;
             }
 
-            tempo = clock() - tempo;
-            if (((double)tempo) / CLOCKS_PER_SEC > 0.8) {
+            gettimeofday(&end, 0);
+            tempoSec = (double) (end.tv_sec - begin.tv_sec) + (end.tv_usec - begin.tv_usec) * 1e-6;
+            printf("tempo: %lf\n", tempoSec);
+            if (tempoSec > 0.4) {
+                printf("nova letra\n");
                 break;
             }
 
             // a quantidade de enters é usada para saber se é um ponto ou um traço
             soma++;
+            printf("soma: %d\n", soma);
 
-            tempo = clock();
+            gettimeofday(&begin, 0);
         }
-        if (soma < 20) {
+        if (soma == 0) {
             palavra[i++] = '.';
         } else {
             palavra[i++] = '-';
@@ -45,10 +52,11 @@ void lerPorClique(char *palavra) {
             break;
         }
 
-        if (((double)tempo) / CLOCKS_PER_SEC > 2.5) {
+        if (tempoSec > 2) {
             palavra[i++] = ' ';
         }
         
-        soma = 1;
+        soma = 0;
+        gettimeofday(&begin, 0);
     }
 }
