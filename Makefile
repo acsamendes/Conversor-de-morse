@@ -27,7 +27,7 @@ RM = rm -rf
 #
 # Compilation and linking
 #
-all: objFolder $(OBJ_DIR)/$(PROJ_NAME) run
+all: objFolder $(OBJ_DIR)/$(PROJ_NAME) run clean
 
 $(OBJ_DIR)/$(PROJ_NAME): $(OBJ)
 	@ echo 'Building binary using GCC linker: $@'
@@ -50,10 +50,12 @@ objFolder:
 
 run:
 	@ clear
-	@./$(OBJ_DIR)/$(PROJ_NAME).exe
+	@./$(OBJ_DIR)/$(PROJ_NAME)
 
 clean:
+	@ echo 'Deleting obj folder: $<'
 	@ $(RM) $(OBJ_DIR)/*.o $(PROJ_NAME) *~
-	@ rmdir $(OBJ_DIR)
+	@ $(RM) $(OBJ_DIR)
+	@ clear
 
 .PHONY: all clean

@@ -130,7 +130,6 @@ void menu() {
     printf("Como funciona o codigo morse?\n");
     printf(ROXO"0 - "FIM_COR);
     printf("Sair\n");
-   
 }
 
 //função esperar para que o usuário pressione enter(interface)
@@ -139,7 +138,3 @@ void esperar() {
     while (getchar() != '\n');
     getchar();  
 }
-
-//Cor do terminal
-#define ROXO "\e[1;34m"
-#define FIM_COR "\e[0m"
