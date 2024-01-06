@@ -23,7 +23,9 @@ int main() {
 
                 printf("Deseja reproduzir em áudio? Esse é um recurso experimental. (S/N) ");
                 if (tolower(getchar()) == 's') {
-                    morseAudio("..-. . .-.. .. .--. .");
+                    clear();
+                    printf(ROXO"Reproduzindo áudio...\n"FIM_COR);
+                    morseAudio("- . ... - .");
                 }
                 esperar();
                 break;
