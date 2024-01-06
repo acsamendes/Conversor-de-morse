@@ -25,7 +25,7 @@ void lerPorClique(char *palavra);
 void morseAudio(char *morse);
 
 void conv_MorseParaAlfaNumerico(char *morse);
-void conv_AlfaNumericoToMorse(char *string);
+char* conv_AlfaNumericoToMorse(char *string);
 
 void clear();
 void menu();

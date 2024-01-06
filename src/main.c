@@ -3,6 +3,7 @@
 int main() {
     char escolha;
     char entrada[100];
+    char *saida;
 
     do {
         clear();
@@ -18,15 +19,18 @@ int main() {
                 printf("Digite o valor alfanumerico: ");
                 scanf(" %[^\n]", entrada);
                 limparBuffer();
-                printf("\nResultado em Morse: \n");
-                conv_AlfaNumericoToMorse(entrada);
+                saida = conv_AlfaNumericoToMorse(entrada);
+                printf("\nResultado em Morse: %s\n", saida);
 
                 printf("Deseja reproduzir em áudio? Esse é um recurso experimental. (S/N) ");
                 if (tolower(getchar()) == 's') {
                     clear();
-                    printf(ROXO"Reproduzindo áudio...\n"FIM_COR);
-                    morseAudio("- . ... - .");
+                    printf(ROXO"Reproduzindo áudio...\n");
+                    morseAudio(saida);
                 }
+
+                free(saida);
+
                 esperar();
                 break;
             case '2':

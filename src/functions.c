@@ -192,26 +192,30 @@ void toLower(char **string_ref, int tam){//string minuscula
 
 }
 
-char* morse_sourse(char c){
-    if(c >= '0' && c <= '9') return morse_num[c - '0'];
-    else if(c == ' ') printf(" ");
-    return morse_alpha[c-'a'];
-}
-
-void xerife(char *id_morse_alpha){
-    printf("%s ", id_morse_alpha);
-}
-
-void conv_AlfaNumericoToMorse(char *string){    
+char* conv_AlfaNumericoToMorse(char *string){
+    char *morseCriado;
     int tam = strlen(string);
+    do {
+        morseCriado = (char*)malloc(sizeof(char) * tam * 6);
+    } while (morseCriado == NULL);
+
     toLower(&string, tam);
 
-    for(int i = 0; i<tam; i++){
-        xerife(morse_sourse(string[i]));
+    char c;
+    for (int i = 0; i < tam; i++){
+        c = string[i];
+        if(c >= '0' && c <= '9') {
+            strcat(morseCriado, morse_num[c - '0']);
+            strcat(morseCriado, " ");
+        } else if(c == ' ') {
+            strcat(morseCriado, "/ ");
+        } else {
+           strcat(morseCriado, morse_alpha[c-'a']);
+           strcat(morseCriado, " "); 
+        }
     }
 
-    printf("\n");
-
+    return morseCriado;
 }
 
 
